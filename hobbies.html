@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hobbies | Rohit Agarwala</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .kohli-card {
+      background: linear-gradient(135deg, #0a0a15, #1a0a0a, #120a0a);
+      border: 1px solid rgba(212,168,83,0.35);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .kohli-card::before {
+      content: '18';
+      position: absolute; right: -1.5rem; top: -2rem;
+      font-family: var(--font-display);
+      font-size: 14rem; font-weight: 900;
+      color: rgba(212,168,83,0.06); line-height: 1;
+      pointer-events: none;
+    }
+    .kohli-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(212,168,83,0.12);
+      border: 1px solid rgba(212,168,83,0.3);
+      border-radius: 20px; padding: 0.4rem 1rem;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+    .divider-line {
+      height: 1px; background: var(--border); margin: 3rem 0;
+    }
+    .hobby-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      transition: all var(--transition);
+    }
+    .hobby-card:hover { border-color: var(--border-hover); }
+    .hobby-icon { font-size: 3rem; margin-bottom: 1.2rem; display: block; }
+  </style>
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">R.<span>Agarwala</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="research.html">Research</a></li><li><a href="publications.html">Publications</a></li>
+      <li><a href="conferences.html">Conferences</a></li><li><a href="talks.html">Talks</a></li>
+      <li><a href="education.html">Education</a></li><li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="research.html">Research</a>
+  <a href="publications.html">Publications</a><a href="conferences.html">Conferences</a>
+  <a href="talks.html">Talks</a><a href="education.html">Education</a>
+  <a href="hobbies.html">Hobbies</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Life Beyond Physics</div>
+      <h1>Hobbies &amp; <em>Passions</em></h1>
+      <p class="subtitle">Because a physicist is more than their equations — here's what makes me, me.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Cricket & Virat -->
+      <div class="section-header fade-up">
+        <div class="section-label">Sport &amp; Inspiration</div>
+        <h2>Cricket — And the Man Behind the #18</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="kohli-card fade-up" style="margin-bottom:2rem;">
+        <div class="kohli-badge">🏏 Jersey No. 18 — Forever</div>
+        <h3 style="font-size:1.8rem; margin-bottom:1rem; color:var(--gold);">Virat Kohli</h3>
+        <p>
+          If Dr. Kalyan Dey shaped my scientific identity and Mr. Manoj Dutta gave me mathematics, 
+          then <strong style="color:var(--gold);">Virat Kohli</strong> gave me something equally essential — 
+          the will to keep going when things get hard.
+        </p>
+        <p>
+          Research is not a sprint. It is a grind — long nights of failed simulations, stubborn results 
+          that refuse to converge, papers that take months to write. In those moments, I think of Kohli. 
+          The man who turned self-doubt into steel. Who came back from fitness issues, form slumps, and 
+          captaincy struggles to produce some of the most legendary innings in cricket history. 
+          His philosophy is simple and profound:
+        </p>
+
+        <div class="quote-block" style="margin:1.5rem 0;">
+          <p>"Self-belief and hard work will always earn you success."</p>
+          <cite>— Virat Kohli</cite>
+        </div>
+
+        <p>
+          That philosophy lives in every paper I submit, every conference I attend, and every equation 
+          I solve. There is always light at the end of a tunnel — Kohli taught me that. And the jersey 
+          number he made iconic? <strong style="color:var(--gold); font-size:1.1rem;">#18</strong>. 
+          It's in my email address. It's in the way I approach my work: never giving up, always 
+          hungry for the next breakthrough.
+        </p>
+        <p style="margin-bottom:0;">
+          I've been representing <strong style="color:var(--text-primary)">Bodoland University</strong> 
+          in inter-university cricket tournaments (2022–2024), including the 
+          <em>Lt. Nilay Dutta Memorial Inter University Cricket Tournament</em>. The sport keeps me 
+          grounded, sharp, and reminded that both cricket and physics demand the same thing: 
+          <em>intense focus, patience, and the courage to trust your instincts</em>.
+        </p>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <!-- Photography -->
+      <div class="section-header fade-up">
+        <div class="section-label">Visual Art</div>
+        <h2>Photography</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="hobby-card fade-up" style="margin-bottom:2rem;">
+        <span class="hobby-icon">📸</span>
+        <p>
+          A physicist studies the universe through equations. A photographer sees the same universe 
+          through a lens. For me, photography is an extension of scientific curiosity — noticing what 
+          most people walk past, finding the extraordinary in the ordinary, and asking <em>"what if 
+          I look at this differently?"</em>
+        </p>
+        <p>
+          I am always ready with my phone camera. A ray of light streaming through a window, the 
+          geometric precision of a building's shadow, the chaos of a busy market frozen in a single 
+          frame — I find meaning in all of it. Photography is about <strong style="color:var(--text-primary)">
+          capturing moments before they become memories</strong>, and I've made it a lifelong practice.
+        </p>
+        <p style="margin-bottom:0;">
+          I am also a <strong style="color:var(--gold)">Google Maps Local Guide — Level 7</strong>, 
+          with over <strong style="color:var(--gold)">2.1 million views</strong> on my contributed 
+          photos and reviews. That's 2.1 million times someone used a photo I took to help 
+          navigate their world. That feels like its own kind of impact.
+        </p>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <!-- Comedy -->
+      <div class="section-header fade-up">
+        <div class="section-label">Laughter &amp; Levity</div>
+        <h2>Stand-up Comedy (Sort Of)</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="hobby-card fade-up" style="margin-bottom:2rem; background: linear-gradient(135deg, #0d0d1a, #111128);">
+        <span class="hobby-icon">🎤</span>
+        <p>
+          I have always been the class clown. In lecture halls, in labs, at conferences — there's 
+          always a joke forming at the back of my mind, waiting for the right moment to escape. 
+          Sometimes it lands beautifully. Sometimes it crashes harder than a Monte Carlo simulation 
+          with wrong initial conditions. But does that stop me? Absolutely not.
+        </p>
+        <p>
+          I believe humor is essential in academia. Physics can be dense, isolating, and relentlessly 
+          serious. A good joke can break the tension in a seminar, make a student feel comfortable 
+          asking a "stupid" question, or just remind everyone in the room that we are human beings 
+          doing science — not machines producing papers.
+        </p>
+        <div class="quote-block">
+          <p>"Comedy is just physics with a punchline — you set up the initial conditions, let the system evolve, and hope the result surprises everyone."</p>
+          <cite>— Rohit Agarwala (yes, I came up with that)</cite>
+        </div>
+        <p style="margin-bottom:0;">
+          My friends have a running joke that my physics talks are funnier than my actual jokes. 
+          I choose to take that as a compliment.
+        </p>
+      </div>
+
+      <!-- Life philosophy -->
+      <div class="card fade-up" style="margin-top:1rem; text-align:center; padding:3rem 2rem; border-color:rgba(212,168,83,0.3);">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">🌊</div>
+        <h3 style="font-family:var(--font-display); font-size:1.6rem; font-weight:300; margin-bottom:1rem;">
+          "A Researcher Who Goes With The Flow"
+        </h3>
+        <p style="max-width:550px; margin:0 auto;">
+          In physics, <em>flow</em> describes the collective motion of a system — how particles 
+          respond to pressure, gradients, and forces in concert. In life, going with the flow 
+          means staying curious, staying adaptable, and trusting that the current will carry you 
+          somewhere worth going. That's my mantra — in the lab, on the cricket pitch, behind 
+          the camera, and on the makeshift comedy stage.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span>© 2025 Rohit Agarwala — Department of Physics, Bodoland University, Kokrajhar</span>
+      <span>Built with ❤️ from Bijni, Assam</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
