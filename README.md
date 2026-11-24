@@ -14,11 +14,17 @@ rohit-website/
 ├── talks.html          ← Talks & Seminars
 ├── education.html      ← Education & CV
 ├── hobbies.html        ← Hobbies
+├── gallery.html        ← Gallery (event photos)
 ├── contact.html        ← Contact
 ├── css/
 │   └── style.css       ← All styles
-└── js/
-    └── main.js         ← Animations & interactions
+├── js/
+│   ├── main.js         ← Animations & interactions
+│   └── gallery.js      ← Photo viewer on the Gallery page
+└── images/
+    └── gallery/
+        └── emmi-2026/  ← One folder per event: full-size photos…
+            └── thumbs/ ← …and smaller copies for the photo grid
 ```
 
 ---
@@ -70,6 +76,19 @@ All content is in plain HTML — you can edit it directly:
 - **New publication?** Add a new `.pub-card` block in `publications.html`
 - **New conference?** Add a new `.conf-card` in `conferences.html`
 - **New talk?** Add a `.timeline-item` in `talks.html`
+- **Change a photo caption?** In `gallery.html`, each photo is an `<a class="photo">` block. Edit the
+  text in its `data-caption="…"` (shown in the photo viewer) and in its `photo-caption` span (shown on hover).
+
+---
+
+## 📷 Adding Event Photos
+
+Photos live in `images/gallery/<event>/`, with a smaller copy of each in `thumbs/`.
+Before uploading, photos are resized for the web and their hidden metadata (including GPS location)
+is removed. Each event gets its own `<section class="gallery-event">` in `gallery.html`.
+
+**After uploading an update:** if the site still looks old, press **Ctrl + F5** (or **Cmd + Shift + R**
+on a Mac) to reload it without the browser's saved copy.
 
 ---
 

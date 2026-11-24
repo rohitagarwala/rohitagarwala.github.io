@@ -498,12 +498,152 @@ footer .footer-inner { display: flex; justify-content: space-between; align-item
   color: var(--gold); opacity: 0.15; line-height: 1; text-align: right;
 }
 
+/* ── Keyboard focus ── */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* =============================================
+   Gallery page
+   ============================================= */
+.gallery-event { padding: 4.5rem 0 2rem; scroll-margin-top: var(--nav-height); }
+.gallery-event + .gallery-event { border-top: 1px solid var(--border); }
+
+/* Event introduction: text beside the talk's title slide */
+.event-intro {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 3rem; align-items: center; margin-bottom: 3.5rem;
+}
+.event-when { font-size: 0.95rem; color: var(--gold); margin-bottom: 0.5rem; }
+.event-intro h2 { margin-bottom: 1.2rem; }
+.event-intro p { max-width: 62ch; }
+.event-talk { border-left: 2px solid var(--gold); padding: 0.2rem 0 0.2rem 1.2rem; margin: 1.8rem 0; }
+.event-talk-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+.event-talk-title {
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
+  line-height: 1.35; color: var(--text-primary); margin-bottom: 0.4rem;
+}
+.event-talk-authors { font-size: 0.9rem; margin: 0; }
+.event-links { display: flex; flex-wrap: wrap; gap: 1.6rem; font-size: 0.92rem; font-weight: 600; margin: 0; }
+.event-links a { text-decoration: underline; text-decoration-color: var(--border-hover); text-underline-offset: 5px; }
+.event-links a:hover { text-decoration-color: var(--gold); }
+
+/* A photo link: opens the full-size photo in the viewer */
+.photo { position: relative; display: block; overflow: hidden; border-radius: 4px; background: var(--bg-card); }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; }
+
+/* Featured photos (title slide, group photo) are shown whole, caption underneath */
+.feature-figure { margin: 0; }
+.feature-figure figcaption {
+  font-family: var(--font-display); font-style: italic; font-size: 1.08rem; line-height: 1.5;
+  color: var(--text-secondary); margin-top: 0.8rem; max-width: 72ch;
+}
+.group-figure { margin-bottom: 3.5rem; }
+
+/* Photo rows: each photo keeps its own shape, and every photo in a row shares one height */
+.photo-rows { --row: 300px; display: flex; flex-wrap: wrap; gap: 10px; }
+.photo-rows::after { content: ''; flex-grow: 10000; }  /* stops the last row from stretching */
+.photo-rows .photo { flex-grow: calc(var(--ar) * 100); flex-basis: calc(var(--ar) * var(--row)); }
+.photo-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 2.8rem 1rem 0.85rem;
+  background: linear-gradient(transparent, rgba(7, 7, 15, 0.88));
+  font-family: var(--font-display); font-style: italic; font-size: 1rem; line-height: 1.35;
+  color: var(--text-primary); opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+}
+.photo:focus-visible .photo-caption { opacity: 1; }
+@media (hover: hover) { .photo:hover .photo-caption { opacity: 1; } }
+
+/* Photo viewer */
+body.viewer-open { overflow: hidden; }
+.viewer {
+  position: fixed; inset: 0; z-index: 2000;
+  display: grid; grid-template-columns: 5rem minmax(0, 1fr) 5rem; align-items: center;
+  background: rgba(7, 7, 15, 0.96);
+  animation: viewer-in 0.2s ease-out;
+}
+.viewer[hidden] { display: none; }
+@keyframes viewer-in { from { opacity: 0; } to { opacity: 1; } }
+.viewer-figure {
+  grid-column: 2; grid-row: 1; margin: 0; height: 100vh; height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.9rem; padding: 4rem 0 1.5rem;
+}
+.viewer-img {
+  max-width: 100%; max-height: calc(100vh - 10rem); max-height: calc(100dvh - 10rem);
+  object-fit: contain; border-radius: 4px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+.viewer-caption {
+  font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45;
+  color: var(--text-primary); text-align: center; max-width: 60ch; margin: 0;
+}
+.viewer-count { font-size: 0.8rem; color: var(--text-muted); margin: 0; font-variant-numeric: tabular-nums; }
+.viewer-btn {
+  display: flex; align-items: center; justify-content: center; justify-self: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(17, 17, 34, 0.85); border: 1px solid var(--border-hover);
+  color: var(--gold); font-size: 1.5rem; line-height: 1; cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.viewer-btn:hover { background: var(--gold-dim); border-color: var(--gold); }
+.viewer-btn[hidden] { display: none; }
+.viewer-btn svg { width: 20px; height: 20px; }
+.viewer-prev { grid-column: 1; grid-row: 1; }
+.viewer-next { grid-column: 3; grid-row: 1; }
+.viewer-close { position: absolute; top: 1rem; right: 1rem; }
+
+/* =============================================
+   Photos on other pages
+   ============================================= */
+/* Home: recent highlight */
+.highlight {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
+.highlight-photo { display: block; }
+.highlight-photo img { display: block; width: 100%; height: 100%; aspect-ratio: 6 / 5; object-fit: cover; }
+.highlight-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+.highlight-when { font-size: 0.95rem; color: var(--gold); margin-bottom: 0.6rem; }
+.highlight-body h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 1rem; }
+.highlight-body p { max-width: 56ch; }
+.highlight-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.6rem; }
+
+/* Conferences: event card with a photo on top */
+.conf-photo { display: block; margin: -1.5rem -1.5rem 1.2rem; overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.conf-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; }
+.conf-grid:has(.conf-photo) { align-items: start; }  /* cards keep their own height next to a photo card */
+.conf-talk { font-style: italic; }
+
+/* Keeps a short phrase on one line, e.g. "Light-Ion" in a heading */
+.nowrap { white-space: nowrap; }
+
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
+}
+@media (max-width: 900px) {
   .contact-grid { grid-template-columns: 1fr; }
   .hobby-feature { grid-template-columns: 1fr; }
+  .event-intro { grid-template-columns: 1fr; gap: 2rem; }
+  .photo-rows { --row: 240px; }
+  .highlight { grid-template-columns: 1fr; }
+  .highlight-photo img { aspect-ratio: 3 / 2; }
+  .highlight-body { padding: 1.8rem; }
+}
+@media (max-width: 640px) {
+  /* row height scaled to the screen so a row holds two portraits, or one portrait and one landscape */
+  .photo-rows { --row: calc(46vw - 21px); gap: 6px; }
+  .viewer { grid-template-columns: 0 minmax(0, 1fr) 0; }
+  .viewer-figure { padding: 4rem 0.75rem 5.5rem; }
+  .viewer-img { max-height: calc(100vh - 13rem); max-height: calc(100dvh - 13rem); }
+  .viewer-prev, .viewer-next { position: absolute; bottom: 1.25rem; }
+  .viewer-prev { left: 1.25rem; }
+  .viewer-next { right: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viewer { animation: none; }
+  .photo-caption { transition: none; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+  .hero-scroll { animation: none; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 1.2rem; }
