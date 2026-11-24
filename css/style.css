@@ -592,19 +592,41 @@ body.viewer-open { overflow: hidden; }
 /* =============================================
    Photos on other pages
    ============================================= */
-/* Home: recent highlight */
+/* Home: recent highlights, newest first */
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1.5rem; }
 .highlight {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex; flex-direction: column;
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius-lg); overflow: hidden;
 }
 .highlight-photo { display: block; }
-.highlight-photo img { display: block; width: 100%; height: 100%; aspect-ratio: 6 / 5; object-fit: cover; }
-.highlight-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+.highlight-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.highlight-body { flex: 1; display: flex; flex-direction: column; padding: 1.8rem 2rem 2rem; }
 .highlight-when { font-size: 0.95rem; color: var(--gold); margin-bottom: 0.6rem; }
-.highlight-body h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 1rem; }
+.highlight-body h3 { font-size: clamp(1.3rem, 2vw, 1.55rem); margin-bottom: 0.9rem; }
 .highlight-body p { max-width: 56ch; }
-.highlight-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.6rem; }
+.highlight-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: auto; padding-top: 0.4rem; }
+
+/* Gallery: links to each event on the page */
+.event-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; margin-top: 1.8rem; }
+.event-index a {
+  font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);
+  padding: 0.45rem 1.1rem; border: 1px solid var(--border-hover); border-radius: 999px;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.event-index a:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+
+/* Gallery: a tall poster beside the event text */
+.portrait-figure { width: 100%; max-width: 420px; justify-self: center; }
+
+/* Hobbies: photo inside the Virat Kohli card */
+.kohli-photo { float: right; width: min(300px, 42%); margin: 0.3rem 0 1.4rem 2.2rem; position: relative; z-index: 1; }
+.kohli-photo img { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border-hover); }
+.kohli-photo figcaption {
+  font-family: var(--font-display); font-style: italic; font-size: 1rem; line-height: 1.45;
+  color: var(--text-secondary); margin-top: 0.7rem;
+}
+.kohli-card .quote-block { overflow: hidden; }  /* keeps the quote box beside the photo, not under it */
 
 /* Conferences: event card with a photo on top */
 .conf-photo { display: block; margin: -1.5rem -1.5rem 1.2rem; overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
@@ -625,9 +647,6 @@ body.viewer-open { overflow: hidden; }
   .hobby-feature { grid-template-columns: 1fr; }
   .event-intro { grid-template-columns: 1fr; gap: 2rem; }
   .photo-rows { --row: 240px; }
-  .highlight { grid-template-columns: 1fr; }
-  .highlight-photo img { aspect-ratio: 3 / 2; }
-  .highlight-body { padding: 1.8rem; }
 }
 @media (max-width: 640px) {
   /* row height scaled to the screen so a row holds two portraits, or one portrait and one landscape */
@@ -635,6 +654,8 @@ body.viewer-open { overflow: hidden; }
   .viewer { grid-template-columns: 0 minmax(0, 1fr) 0; }
   .viewer-figure { padding: 4rem 0.75rem 5.5rem; }
   .viewer-img { max-height: calc(100vh - 13rem); max-height: calc(100dvh - 13rem); }
+  .kohli-photo { float: none; width: 100%; max-width: 360px; margin: 0 auto 1.5rem; }
+  .highlight-body { padding: 1.5rem; }
   .viewer-prev, .viewer-next { position: absolute; bottom: 1.25rem; }
   .viewer-prev { left: 1.25rem; }
   .viewer-next { right: 1.25rem; }

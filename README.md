@@ -21,10 +21,15 @@ rohit-website/
 ├── js/
 │   ├── main.js         ← Animations & interactions
 │   └── gallery.js      ← Photo viewer on the Gallery page
+├── files/
+│   └── aepshep-2026-poster.pdf   ← Downloadable poster
 └── images/
+    ├── hobbies/                  ← Photos used on the Hobbies page
     └── gallery/
-        └── emmi-2026/  ← One folder per event: full-size photos…
-            └── thumbs/ ← …and smaller copies for the photo grid
+        ├── aepshep-2026/         ← One folder per event: full-size photos…
+        │   └── thumbs/           ← …and smaller copies for the photo grid
+        └── emmi-2026/
+            └── thumbs/
 ```
 
 ---
